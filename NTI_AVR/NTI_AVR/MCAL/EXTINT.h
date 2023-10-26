@@ -9,7 +9,7 @@
 #ifndef EXTINT_H_
 #define EXTINT_H_
 
-#include "stdtypes.h"
+#include "C:\Users\USER\Documents\NTI_AVR\NTI_AVR\stdtypes.h"
 
 #define INT0 6
 #define INT1 7 

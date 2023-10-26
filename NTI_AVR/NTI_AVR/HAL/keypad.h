@@ -12,5 +12,6 @@
 				
 void keypad_init (void);
 u8 keypad_getkey(void);
+u8 keypad_getkey_char(void);
 
 #endif /* KEYPAD_H_ */

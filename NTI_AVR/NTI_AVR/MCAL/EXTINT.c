@@ -4,9 +4,10 @@
  * Created: 10/22/23 2:38:47 PM
  *  Author: USER
  */ 
-#include "GIE.h"
-#include "EXTINT.h"
-#include "utils.h"
+#include "C:\Users\USER\Documents\NTI_AVR\NTI_AVR\MCAL\GIE.h"
+#include "C:\Users\USER\Documents\NTI_AVR\NTI_AVR\MCAL\EXTINT.h"
+#include "C:\Users\USER\Documents\NTI_AVR\NTI_AVR\utils.h"
+
 void (* p_NTI[3])(void)={0,0,0};
 	
 void EXT_voidEnable(u8 intid,TRIGGER trig)

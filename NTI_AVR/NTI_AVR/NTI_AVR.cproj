@@ -121,40 +121,64 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Dio.c">
+    <Compile Include="APP\Password.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Dio.h">
+    <Compile Include="APP\password.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="EXTINT.c">
+    <Compile Include="HAL\keypad.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="EXTINT.h">
+    <Compile Include="HAL\keypad.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="GIE.c">
+    <Compile Include="HAL\keypad_config.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="GIE.h">
+    <Compile Include="HAL\lcd.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="keypad.c">
+    <Compile Include="HAL\lcd.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="keypad.h">
+    <Compile Include="HAL\lcd_config.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="keypad_config.h">
+    <Compile Include="HAL\sevensegment.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\sevensegment.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="sevensegment.c">
+    <Compile Include="MCAL\adc.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="sevensegment.h">
+    <Compile Include="MCAL\adc.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\adc_config.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\Dio.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\Dio.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\EXTINT.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\EXTINT.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\GIE.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\GIE.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="stdtypes.h">
@@ -166,6 +190,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="MCAL" />
+    <Folder Include="APP" />
+    <Folder Include="HAL" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
 </Project>

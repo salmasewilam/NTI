@@ -4,8 +4,8 @@
  * Created: 10/21/23 11:27:37 AM
  *  Author: USER
  */ 
-#include "Dio.h"
-#include "sevensegment.h"
+#include "C:\Users\USER\Documents\NTI_AVR\NTI_AVR\MCAL\Dio.h"
+#include "C:\Users\USER\Documents\NTI_AVR\NTI_AVR\HAL\sevensegment.h"
 
 #define F_CPU 8000000
 #include <util/delay.h>

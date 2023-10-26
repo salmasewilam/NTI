@@ -4,10 +4,10 @@
  * Created: 10/21/23 2:20:27 PM
  *  Author: USER
  */ 
-#include "stdtypes.h"
-#include "Dio.h"
-#include "keypad.h"
-#include "keypad_config.h"
+#include "C:\Users\USER\Documents\NTI_AVR\NTI_AVR\stdtypes.h"
+#include "C:\Users\USER\Documents\NTI_AVR\NTI_AVR\MCAL\Dio.h"
+#include "C:\Users\USER\Documents\NTI_AVR\NTI_AVR\HAL\keypad.h"
+#include "C:\Users\USER\Documents\NTI_AVR\NTI_AVR\HAL\keypad_config.h"
 
 #define F_CPU 8000000
 #include <util/delay.h>
@@ -21,7 +21,11 @@ u8 keys[4][4]={{'7','8','9','/'},
 				{'1','2','3','-'},
 				{'C','0','=','+'}
 				};
-
+u8 keys2[4][4]={{'A','B','C','D'},
+{'E','F','G','H'},
+{'I','J','K','L'},
+{'M','N','O','S'}
+};
 void keypad_init (void)
 {
 	//set output pins rows
@@ -59,6 +63,28 @@ u8 keypad_getkey(void)
 			if (DIO_GetPinValue(PORT_IN,input[c])==LOW)
 			{
 				key=keys[r][c];
+				while(DIO_GetPinValue(PORT_IN,input[c])==LOW);
+				return key;
+			}
+			
+		}
+		DIO_voidSetPinValue(PORT_OUT,output[r],HIGH);
+	}
+	return key;
+}
+
+u8 keypad_getkey_char(void)
+{
+	int r,c;
+	u8 key='T';
+	for (r=0;r<ROWS;r++)
+	{
+		DIO_voidSetPinValue(PORT_OUT,output[r],LOW);
+		for (c=0;c<COLS;c++)
+		{
+			if (DIO_GetPinValue(PORT_IN,input[c])==LOW)
+			{
+				key=keys2[r][c];
 				while(DIO_GetPinValue(PORT_IN,input[c])==LOW);
 				return key;
 			}

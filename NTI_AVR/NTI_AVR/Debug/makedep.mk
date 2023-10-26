@@ -2,15 +2,21 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
-Dio.c
+APP\Password.c
 
-EXTINT.c
+HAL\keypad.c
 
-GIE.c
+HAL\lcd.c
 
-keypad.c
+HAL\sevensegment.c
 
 main.c
 
-sevensegment.c
+MCAL\adc.c
+
+MCAL\Dio.c
+
+MCAL\EXTINT.c
+
+MCAL\GIE.c
 

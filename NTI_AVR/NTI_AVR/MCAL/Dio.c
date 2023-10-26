@@ -5,10 +5,7 @@
  *  Author: USER
  */ 
 
-
-
-
-#include "Dio.h"
+#include "C:\Users\USER\Documents\NTI_AVR\NTI_AVR\MCAL\Dio.h"
 
 void DIO_voidSetPinDirection(ports_t *ptr,unsigned char p,Direction dir )
 {
@@ -68,5 +65,6 @@ unsigned char DIO_GetPortValue(ports_t *ptr)
 {
 	unsigned char val;
 	val=ptr->pin.port;
+	return val;
 }
 

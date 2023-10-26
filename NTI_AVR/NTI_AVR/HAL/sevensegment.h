@@ -9,7 +9,7 @@
 #ifndef SEVENSEGMENT_H_
 #define SEVENSEGMENT_H_
 
-#include "stdtypes.h"
+#include "C:\Users\USER\Documents\NTI_AVR\NTI_AVR\stdtypes.h"
 
 void sevseg_init(void);
 void sevseg_num(u8 num);
