@@ -47,6 +47,6 @@
 typedef enum {ADC0=0,ADC1,ADC2,ADC3,ADC4,ADC5,ADC6,ADC7}CHANNELS;
 typedef enum {FREE_RUNNING=0,Analog_Comparator,External_Interrupt}TRIG;
 void ADC_Init(void) ;
-u16 ADC_getDigitalValueSynchNonBlocking (void);
+u8 ADC_getDigitalValueSynchNonBlocking (u16 * p);
 
 #endif /* ADC_H_ */

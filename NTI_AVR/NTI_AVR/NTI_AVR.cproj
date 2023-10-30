@@ -181,6 +181,27 @@
     <Compile Include="MCAL\GIE.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="MCAL\spi.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\SPI_interface.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\Timer.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\Timer_interface.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\uart.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\Uart_config.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\uart_interface.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="stdtypes.h">
       <SubType>compile</SubType>
     </Compile>

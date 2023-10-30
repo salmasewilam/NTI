@@ -6,7 +6,7 @@
  */ 
 
 #include "C:\Users\USER\Documents\NTI_AVR\NTI_AVR\MCAL\Dio.h"
-
+#include "C:\Users\USER\Documents\NTI_AVR\NTI_AVR\stdtypes.h"
 void DIO_voidSetPinDirection(ports_t *ptr,unsigned char p,Direction dir )
 {
 	switch(p)
@@ -68,3 +68,11 @@ unsigned char DIO_GetPortValue(ports_t *ptr)
 	return val;
 }
 
+void DIO_Toggle_pin(ports_t *ptr,unsigned char p)
+{
+	u8 val=DIO_GetPinValue(ptr,p);
+	if (val==1)
+	DIO_voidSetPinValue(ptr,p,0);
+	else
+	DIO_voidSetPinValue(ptr,p,1);
+}

@@ -30,28 +30,27 @@ void ADC_Init(void)
 	SET_BIT(ADCSRA,ADEN);
 }
 
-u16 ADC_getDigitalValueSynchBlocking (void)
+u16 ADC_getDigitalValueSynchBlocking (CHANNELS ch)
 {
 	u16 data;
-	//ADMUX=ADMUX & 0xE0;
-	//ADMUX=ADMUX |ch;
+	ADMUX=ADMUX & 0xE0;
+	ADMUX=ADMUX |ch;
 	SET_BIT(ADCSRA,ADSC);
 	
 while (READ_BIT(ADCSRA,ADSC)!=0);
 	data=ADC;
 	return data;
 }
-u16 ADC_getDigitalValueSynchNonBlocking (void)
+u8 ADC_getDigitalValueSynchNonBlocking (u16 * p)
 {
-	u16 data;
 	SET_BIT(ADCSRA,ADSC);
 	
 	if (READ_BIT(ADCSRA,ADSC)==0)
 	{
-		data=ADC;
-		return data;
+		*p=ADC;
+		return 0;
 	}
-	return 0;
+	return -1;
 }
 void ADC_getDigitalValueAsynchCallBack(void(*p)(void))
 {
@@ -60,6 +59,8 @@ void ADC_getDigitalValueAsynchCallBack(void(*p)(void))
 		EXT_INT_ptr=p;
 		//enable();
 	SET_BIT(ADCSRA,ADSC);
+	SET_BIT(ADCSRA,ADSC);
+	
 	
 	}
 

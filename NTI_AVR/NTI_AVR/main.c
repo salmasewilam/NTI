@@ -17,14 +17,18 @@
 #include "C:\Users\USER\Documents\NTI_AVR\NTI_AVR\MCAL\adc.h"
 #include "C:\Users\USER\Documents\NTI_AVR\NTI_AVR\utils.h"
 #include "C:\Users\USER\Documents\NTI_AVR\NTI_AVR\APP\password.h"
-
+#include "C:\Users\USER\Documents\NTI_AVR\NTI_AVR\MCAL\Timer_interface.h"
+#include "C:\Users\USER\Documents\NTI_AVR\NTI_AVR\MCAL\uart_interface.h"
+#include "C:\Users\USER\Documents\NTI_AVR\NTI_AVR\MCAL\SPI_interface.h"
+extern u32 c;
 
 u16 data;
 u8 flag=0;
-void f1(void)
+void f1(u8 *str)
 {
-	DIO_voidSetPinDirection(ptrC,2,1);
-	DIO_voidSetPinValue(ptrC,2,1);
+	static int i=0;
+	str[i]=UDR;
+	i++;
 }
 void f2(void)
 {
@@ -38,23 +42,22 @@ void f3(void)
 	SET_BIT(ADCSRA,ADSC);
 	
 }
+
 int main(void)
 {
 	H_LCD_void_Init();
 	sevseg_init();
 	keypad_init();
-	ADC_Init();
-	//DIO_voidSetPinDirection(ptrA,0,0);
-	
-	//EXT_voidEnable(INT0,The_rising_edge);
-	//EXT_voidEnable(INT1,The_rising_edge);
-//	EXT_voidEnable(INT2,The_rising_edge);
-	
-//	EXTINT_setcallback(f2,INT0);
-	//EXTINT_setcallback(f1,INT1);
-	//EXTINT_setcallback(f3,INT2);
-	//enable();
-   u8 key;
+//	ADC_Init();
+//	Timer0_Init(Fast_PWM_Mode,Timer0_Scaler_1024,Set_on_compare);
+//	Timer1_Init(Timer1_Normal_Mode,Timer1_Scaler_1024,Timer1_Disconnected,Timer1_Disconnected);
+SPI_init_bits init={F_4,SAMPLE,LOW_IDLE,MASTER,MSB,ENABLED,POLLING};
+     Uart_Init();
+	 SPI_init(&init);
+
+	DIO_voidSetPinDirection(ptrA,6,1);
+	DIO_voidSetPinDirection(ptrD,0,0);
+
 	u8 smiley[8] = {
 		0b00000,
 		0b10001,
@@ -105,19 +108,24 @@ int main(void)
 		0b10010,
 		0b11110
 	};
-//	H_LCD_void_creatCustomChar(smiley, 0);
-	//H_LCD_void_creatCustomChar(s, 1);
-	//H_LCD_void_creatCustomChar(l, 2);
-//	H_LCD_void_creatCustomChar(m, 3);
-	//H_LCD_void_creatCustomChar(a, 4);
+	
+	//Uart_RX_SetCallBack(ReciveDataNoBlock_callback);
 
-	//H_LCD_void_gotoXY(0,6);
+//Uart_RX_InterruptEnable();
 
-
-	    while (1) {
-				H_LCD_void_clear();
-				app();
-				_delay_ms(3000);
+	//enable();
+	//sei();
+		  u8 data2;
+	u8 data[10];
 		
-		}
+while (1) {
+	data2=ReciveString_10char(data);
+	if (data2==1)
+	
+	{
+		//H_LCD_void_sendString(data);
 	}
+
+		}
+		
+}

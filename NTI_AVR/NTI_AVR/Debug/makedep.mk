@@ -20,3 +20,9 @@ MCAL\EXTINT.c
 
 MCAL\GIE.c
 
+MCAL\spi.c
+
+MCAL\Timer.c
+
+MCAL\uart.c
+

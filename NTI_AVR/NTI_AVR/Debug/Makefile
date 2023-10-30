@@ -48,7 +48,10 @@ C_SRCS +=  \
 ../MCAL/adc.c \
 ../MCAL/Dio.c \
 ../MCAL/EXTINT.c \
-../MCAL/GIE.c
+../MCAL/GIE.c \
+../MCAL/spi.c \
+../MCAL/Timer.c \
+../MCAL/uart.c
 
 
 PREPROCESSING_SRCS += 
@@ -66,7 +69,10 @@ main.o \
 MCAL/adc.o \
 MCAL/Dio.o \
 MCAL/EXTINT.o \
-MCAL/GIE.o
+MCAL/GIE.o \
+MCAL/spi.o \
+MCAL/Timer.o \
+MCAL/uart.o
 
 OBJS_AS_ARGS +=  \
 APP/Password.o \
@@ -77,7 +83,10 @@ main.o \
 MCAL/adc.o \
 MCAL/Dio.o \
 MCAL/EXTINT.o \
-MCAL/GIE.o
+MCAL/GIE.o \
+MCAL/spi.o \
+MCAL/Timer.o \
+MCAL/uart.o
 
 C_DEPS +=  \
 APP/Password.d \
@@ -88,7 +97,10 @@ main.d \
 MCAL/adc.d \
 MCAL/Dio.d \
 MCAL/EXTINT.d \
-MCAL/GIE.d
+MCAL/GIE.d \
+MCAL/spi.d \
+MCAL/Timer.d \
+MCAL/uart.d
 
 C_DEPS_AS_ARGS +=  \
 APP/Password.d \
@@ -99,7 +111,10 @@ main.d \
 MCAL/adc.d \
 MCAL/Dio.d \
 MCAL/EXTINT.d \
-MCAL/GIE.d
+MCAL/GIE.d \
+MCAL/spi.d \
+MCAL/Timer.d \
+MCAL/uart.d
 
 OUTPUT_FILE_PATH +=NTI_AVR.elf
 
@@ -172,6 +187,27 @@ MCAL/EXTINT.o: ../MCAL/EXTINT.c
 	
 
 MCAL/GIE.o: ../MCAL/GIE.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../.."  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+MCAL/spi.o: ../MCAL/spi.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../.."  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+MCAL/Timer.o: ../MCAL/Timer.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../.."  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+MCAL/uart.o: ../MCAL/uart.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../.."  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
