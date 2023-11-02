@@ -8,27 +8,23 @@
 #define F_CPU 8000000
 #include <util/delay.h>
 
-#include "C:\Users\USER\Documents\NTI_AVR\NTI_AVR\MCAL\Dio.h"
-#include "C:\Users\USER\Documents\NTI_AVR\NTI_AVR\HAL\sevensegment.h"
-#include "C:\Users\USER\Documents\NTI_AVR\NTI_AVR\HAL\keypad.h"
-#include "C:\Users\USER\Documents\NTI_AVR\NTI_AVR\MCAL\EXTINT.h"
-#include "C:\Users\USER\Documents\NTI_AVR\NTI_AVR\MCAL\GIE.h"
-#include "C:\Users\USER\Documents\NTI_AVR\NTI_AVR\HAL\lcd.h"
-#include "C:\Users\USER\Documents\NTI_AVR\NTI_AVR\MCAL\adc.h"
-#include "C:\Users\USER\Documents\NTI_AVR\NTI_AVR\utils.h"
-#include "C:\Users\USER\Documents\NTI_AVR\NTI_AVR\APP\password.h"
-#include "C:\Users\USER\Documents\NTI_AVR\NTI_AVR\MCAL\Timer_interface.h"
-#include "C:\Users\USER\Documents\NTI_AVR\NTI_AVR\MCAL\uart_interface.h"
-#include "C:\Users\USER\Documents\NTI_AVR\NTI_AVR\MCAL\SPI_interface.h"
-extern u32 c;
+#include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\MCAL\DIO\Dio.h"
+#include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\HAL\7SEG\sevensegment.h"
+#include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\HAL\KeyPad\keypad.h"
+#include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\MCAL\EXT_INT\EXTINT.h"
+#include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\GI\GIE.h"
+#include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\HAL\LCD\lcd.h"
+#include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\MCAL\ADC\adc.h"
+#include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\MCAL\Timer\Timer_interface.h"
+#include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\MCAL\UART\uart_interface.h"
+#include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\MCAL\SPI\SPI_interface.h"
+#include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\HAL\UltraSonic\ultrasonic.h"
+#include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\MCAL\IIC\IIC_Interface.h"
 
-u16 data;
-u8 flag=0;
 void f1(u8 *str)
 {
-	static int i=0;
-	str[i]=UDR;
-	i++;
+
+
 }
 void f2(void)
 {
@@ -37,10 +33,7 @@ void f2(void)
 }
 void f3(void)
 {
-	data=ADC;
-	flag=1;
-	SET_BIT(ADCSRA,ADSC);
-	
+
 }
 
 int main(void)
@@ -48,15 +41,20 @@ int main(void)
 	H_LCD_void_Init();
 	sevseg_init();
 	keypad_init();
-//	ADC_Init();
-//	Timer0_Init(Fast_PWM_Mode,Timer0_Scaler_1024,Set_on_compare);
-//	Timer1_Init(Timer1_Normal_Mode,Timer1_Scaler_1024,Timer1_Disconnected,Timer1_Disconnected);
-SPI_init_bits init={F_4,SAMPLE,LOW_IDLE,MASTER,MSB,ENABLED,POLLING};
-     Uart_Init();
-	 SPI_init(&init);
+	ADC_Init();
+	//Timer1_Init(Timer1_Normal_Mode,Timer1_Scaler_8,Timer1_Disconnected,Timer1_Disconnected);
+	
+	//UltraSonic_init();
+	//Timer0_Init(Timer0_Fast_PWM_Mode,Timer0_Scaler_64,Timer0_Set_on_compare);
+	//Timer1_Init(Timer1_Normal_Mode,Timer1_Scaler_8,Timer1_Disconnected,Timer1_Disconnected);
+  SPI_init_bits init={F_4,SAMPLE,LOW_IDLE,MASTER,MSB,ENABLED,POLLING};
+     //Uart_Init();
+	 // SPI_init(&init);
+	 I2C_init(I2C_prescaler_4,SCL_100);
 
-	DIO_voidSetPinDirection(ptrA,6,1);
-	DIO_voidSetPinDirection(ptrD,0,0);
+   // DIO_voidSetPinDirection(ptrB,5,1);
+  //DIO_voidSetPinDirection(ptrB,6,0);
+ // DIO_voidSetPinDirection(ptrB,7,1);
 
 	u8 smiley[8] = {
 		0b00000,
@@ -114,17 +112,21 @@ SPI_init_bits init={F_4,SAMPLE,LOW_IDLE,MASTER,MSB,ENABLED,POLLING};
 //Uart_RX_InterruptEnable();
 
 	//enable();
+	//Timer0_EnableInt(Timer0_Compare_Match);
+	//Timer1_ICU_InterruptEnable();
+	//Timer1_OVF_InterruptEnable();
 	//sei();
-		  u8 data2;
-	u8 data[10];
-		
-while (1) {
-	data2=ReciveString_10char(data);
-	if (data2==1)
+		  u8 data2, data=0;
+		  u16 d;
+	I2C_sendStart();
 	
-	{
-		//H_LCD_void_sendString(data);
-	}
+while (1) {
+	I2C_sendByte(0x41);
+	I2C_recieveByte_ACK(&data2);
+	H_LCD_void_sendData(data2);
+	data++;
+	if (data==5)
+	I2C_sendStop();
 
 		}
 		

@@ -4,25 +4,31 @@
 
 APP\Password.c
 
-HAL\keypad.c
+GI\GIE.c
 
-HAL\lcd.c
+HAL\7SEG\sevensegment.c
 
-HAL\sevensegment.c
+HAL\EEPROM\eeprom.c
+
+HAL\KeyPad\keypad.c
+
+HAL\LCD\lcd.c
+
+HAL\UltraSonic\ultrasonic.c
 
 main.c
 
-MCAL\adc.c
+MCAL\ADC\adc.c
 
-MCAL\Dio.c
+MCAL\DIO\Dio.c
 
-MCAL\EXTINT.c
+MCAL\EXT_INT\EXTINT.c
 
-MCAL\GIE.c
+MCAL\IIC\IIC.c
 
-MCAL\spi.c
+MCAL\SPI\spi.c
 
-MCAL\Timer.c
+MCAL\Timer\Timer.c
 
-MCAL\uart.c
+MCAL\UART\uart.c
 

@@ -127,79 +127,133 @@
     <Compile Include="APP\password.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="HAL\keypad.c">
+    <Compile Include="GI\GIE.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="HAL\keypad.h">
+    <Compile Include="GI\GIE.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="HAL\keypad_config.h">
+    <Compile Include="GI\GIE_Private.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="HAL\lcd.c">
+    <Compile Include="HAL\7SEG\sevensegment.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="HAL\lcd.h">
+    <Compile Include="HAL\7SEG\sevensegment.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="HAL\lcd_config.h">
+    <Compile Include="HAL\EEPROM\eeprom.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="HAL\sevensegment.c">
+    <Compile Include="HAL\EEPROM\EEPROM_interface.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="HAL\sevensegment.h">
+    <Compile Include="HAL\KeyPad\keypad.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\KeyPad\keypad.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\KeyPad\keypad_config.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\LCD\lcd.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\LCD\lcd.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\LCD\lcd_config.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\UltraSonic\ultrasonic.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\UltraSonic\ultrasonic.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\UltraSonic\ultrasonic_config.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\UltraSonic\UltraSonic_private.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="MCAL\adc.c">
+    <Compile Include="MCAL\ADC\adc.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="MCAL\adc.h">
+    <Compile Include="MCAL\ADC\adc.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="MCAL\adc_config.h">
+    <Compile Include="MCAL\ADC\adc_config.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="MCAL\Dio.c">
+    <Compile Include="MCAL\ADC\Adc_private.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="MCAL\Dio.h">
+    <Compile Include="MCAL\DIO\Dio.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="MCAL\EXTINT.c">
+    <Compile Include="MCAL\DIO\Dio.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="MCAL\EXTINT.h">
+    <Compile Include="MCAL\DIO\Dio_Private.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="MCAL\GIE.c">
+    <Compile Include="MCAL\EXT_INT\EXTINT.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="MCAL\GIE.h">
+    <Compile Include="MCAL\EXT_INT\EXTINT.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="MCAL\spi.c">
+    <Compile Include="MCAL\EXT_INT\ExtInt_private.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="MCAL\SPI_interface.h">
+    <Compile Include="MCAL\IIC\IIC.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="MCAL\Timer.c">
+    <Compile Include="MCAL\IIC\IIC_Interface.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="MCAL\Timer_interface.h">
+    <Compile Include="MCAL\IIC\IIC_private.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="MCAL\uart.c">
+    <Compile Include="MCAL\SPI\spi.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="MCAL\Uart_config.h">
+    <Compile Include="MCAL\SPI\SPI_config.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="MCAL\uart_interface.h">
+    <Compile Include="MCAL\SPI\SPI_interface.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\SPI\Spi_private.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\Timer\Timer.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\Timer\Timer_Config.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\Timer\Timer_interface.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\Timer\Timer_private.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\UART\uart.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\UART\Uart_config.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\UART\uart_interface.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\UART\Uart_private.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="stdtypes.h">
@@ -210,9 +264,22 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="GI\" />
+    <Folder Include="HAL\KeyPad" />
+    <Folder Include="HAL\LCD" />
+    <Folder Include="HAL\7SEG" />
+    <Folder Include="HAL\EEPROM" />
+    <Folder Include="HAL\UltraSonic" />
     <Folder Include="MCAL" />
     <Folder Include="APP" />
     <Folder Include="HAL" />
+    <Folder Include="MCAL\DIO" />
+    <Folder Include="MCAL\ADC" />
+    <Folder Include="MCAL\EXT_INT" />
+    <Folder Include="MCAL\IIC" />
+    <Folder Include="MCAL\Timer" />
+    <Folder Include="MCAL\SPI" />
+    <Folder Include="MCAL\UART" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
 </Project>
