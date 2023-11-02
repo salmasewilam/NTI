@@ -28,7 +28,7 @@
 #define L_ADJUST 1
 
 #define PRESCALER ADC_SCALER_8
-#define VREF  VREF_AVCC
+#define VREF  VREF_AREF
 #define ADJUST R_ADJUST
 
 

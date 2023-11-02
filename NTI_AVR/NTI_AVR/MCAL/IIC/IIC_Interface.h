@@ -11,6 +11,13 @@
 #include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\stdtypes.h"
 
 #define	STATUS_REGISTER_MASK	0xF8
+
+#define TWI_MT_START 0X08
+#define TWI_MT_SLA_W_ACK 0x18
+#define TWI_MT_DATA_ACK  0x28
+#define TWI_MR_SLA_R_ACK 0x40
+#define TWI_MR_DATA_ACK  0x50
+
 #define TWBR_OF_SCL(scl,pre)  ((((16000000)/(scl))-16)/((2)*(pre)))
 typedef enum{SCL_100,SCL_400}SCL_t;
 typedef enum {I2C_prescaler_1=0,I2C_prescaler_4,I2C_prescaler_16,I2C_prescaler_64}i2c_prescaler_t;

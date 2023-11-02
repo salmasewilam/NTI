@@ -2,7 +2,9 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
-APP\Password.c
+APP\CoolingSystem\coolingsystem.c
+
+APP\Data_password\Password.c
 
 GI\GIE.c
 
@@ -13,6 +15,8 @@ HAL\EEPROM\eeprom.c
 HAL\KeyPad\keypad.c
 
 HAL\LCD\lcd.c
+
+HAL\Lm35\lm35.c
 
 HAL\UltraSonic\ultrasonic.c
 

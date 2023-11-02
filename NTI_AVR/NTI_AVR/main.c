@@ -20,7 +20,8 @@
 #include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\MCAL\SPI\SPI_interface.h"
 #include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\HAL\UltraSonic\ultrasonic.h"
 #include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\MCAL\IIC\IIC_Interface.h"
-
+#include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\HAL\EEPROM\EEPROM_interface.h"
+#include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\HAL\Lm35\lm35.h"
 void f1(u8 *str)
 {
 
@@ -38,10 +39,10 @@ void f3(void)
 
 int main(void)
 {
-	H_LCD_void_Init();
+	//H_LCD_void_Init();
 	sevseg_init();
 	keypad_init();
-	ADC_Init();
+	//ADC_Init();
 	//Timer1_Init(Timer1_Normal_Mode,Timer1_Scaler_8,Timer1_Disconnected,Timer1_Disconnected);
 	
 	//UltraSonic_init();
@@ -50,7 +51,9 @@ int main(void)
   SPI_init_bits init={F_4,SAMPLE,LOW_IDLE,MASTER,MSB,ENABLED,POLLING};
      //Uart_Init();
 	 // SPI_init(&init);
-	 I2C_init(I2C_prescaler_4,SCL_100);
+	 //I2C_init(I2C_prescaler_4,SCL_100);
+	// EEPROM_Init();
+	coolingsystem_init();
 
    // DIO_voidSetPinDirection(ptrB,5,1);
   //DIO_voidSetPinDirection(ptrB,6,0);
@@ -116,17 +119,10 @@ int main(void)
 	//Timer1_ICU_InterruptEnable();
 	//Timer1_OVF_InterruptEnable();
 	//sei();
-		  u8 data2, data=0;
-		  u16 d;
-	I2C_sendStart();
-	
+
+
 while (1) {
-	I2C_sendByte(0x41);
-	I2C_recieveByte_ACK(&data2);
-	H_LCD_void_sendData(data2);
-	data++;
-	if (data==5)
-	I2C_sendStop();
+	coolingsystem_app();
 
 		}
 		

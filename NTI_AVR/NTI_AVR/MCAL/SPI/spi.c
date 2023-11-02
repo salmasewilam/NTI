@@ -8,9 +8,6 @@
 #include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\MCAL\SPI\Spi_private.h"
 #include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\GI\GIE.h"
 #include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\utils.h"
-#include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\HAL\LCD\lcd.h"
-#define F_CPU 8000000
-#include <util/delay.h>
 
 void SPI_init (SPI_init_bits * init)
 {

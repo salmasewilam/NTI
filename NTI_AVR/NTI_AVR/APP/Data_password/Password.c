@@ -4,13 +4,13 @@
  * Created: 10/26/23 8:43:36 PM
  *  Author: USER
  */ 
-#include "C:\Users\USER\Documents\NTI_AVR\NTI_AVR\APP\password.h"
-#include "C:\Users\USER\Documents\NTI_AVR\NTI_AVR\HAL\keypad.h"
-#include "C:\Users\USER\Documents\NTI_AVR\NTI_AVR\HAL\lcd.h"
+#include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\APP\Data_password\password.h"
+#include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\HAL\KeyPad\keypad.h"
+#include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\HAL\LCD\lcd.h"
 
 
-data_t data_base[2]={{"AHMED ALI",1234,5060},{"SARA OMAR",5678,1020}};
-u8 index=-1;
+static const data_t data_base[2]={{"AHMED ALI",1234,5060},{"SARA OMAR",5678,1020}};
+static u8 index=-1;
 u32 get_id(void)
 {
 	u32 id=0;

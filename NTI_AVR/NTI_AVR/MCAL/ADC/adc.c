@@ -65,6 +65,10 @@ void ADC_SetCallBack(void(*p)(void))
 	}
 
 }
+u16 ADC_getreading(void)
+{
+	return ADC;
+}
 void ADC_getDigitalValueAsynchCallBack(CHANNELS ch,void(*p)(void))
 {
 	//set channel

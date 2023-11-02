@@ -33,11 +33,14 @@ LINKER_SCRIPT_DEP:=
 
 # Every subdirectory with source files must be described here
 SUBDIRS :=  \
+../APP/Data_password \
+../APP/CoolingSystem \
 ../GI/ \
 ../HAL/KeyPad \
 ../HAL/LCD \
 ../HAL/7SEG \
 ../HAL/EEPROM \
+../HAL/Lm35 \
 ../HAL/UltraSonic \
 ../MCAL \
 ../APP \
@@ -53,12 +56,14 @@ SUBDIRS :=  \
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
-../APP/Password.c \
+../APP/CoolingSystem/coolingsystem.c \
+../APP/Data_password/Password.c \
 ../GI/GIE.c \
 ../HAL/7SEG/sevensegment.c \
 ../HAL/EEPROM/eeprom.c \
 ../HAL/KeyPad/keypad.c \
 ../HAL/LCD/lcd.c \
+../HAL/Lm35/lm35.c \
 ../HAL/UltraSonic/ultrasonic.c \
 ../main.c \
 ../MCAL/ADC/adc.c \
@@ -77,12 +82,14 @@ ASM_SRCS +=
 
 
 OBJS +=  \
-APP/Password.o \
+APP/CoolingSystem/coolingsystem.o \
+APP/Data_password/Password.o \
 GI/GIE.o \
 HAL/7SEG/sevensegment.o \
 HAL/EEPROM/eeprom.o \
 HAL/KeyPad/keypad.o \
 HAL/LCD/lcd.o \
+HAL/Lm35/lm35.o \
 HAL/UltraSonic/ultrasonic.o \
 main.o \
 MCAL/ADC/adc.o \
@@ -94,12 +101,14 @@ MCAL/Timer/Timer.o \
 MCAL/UART/uart.o
 
 OBJS_AS_ARGS +=  \
-APP/Password.o \
+APP/CoolingSystem/coolingsystem.o \
+APP/Data_password/Password.o \
 GI/GIE.o \
 HAL/7SEG/sevensegment.o \
 HAL/EEPROM/eeprom.o \
 HAL/KeyPad/keypad.o \
 HAL/LCD/lcd.o \
+HAL/Lm35/lm35.o \
 HAL/UltraSonic/ultrasonic.o \
 main.o \
 MCAL/ADC/adc.o \
@@ -111,12 +120,14 @@ MCAL/Timer/Timer.o \
 MCAL/UART/uart.o
 
 C_DEPS +=  \
-APP/Password.d \
+APP/CoolingSystem/coolingsystem.d \
+APP/Data_password/Password.d \
 GI/GIE.d \
 HAL/7SEG/sevensegment.d \
 HAL/EEPROM/eeprom.d \
 HAL/KeyPad/keypad.d \
 HAL/LCD/lcd.d \
+HAL/Lm35/lm35.d \
 HAL/UltraSonic/ultrasonic.d \
 main.d \
 MCAL/ADC/adc.d \
@@ -128,12 +139,14 @@ MCAL/Timer/Timer.d \
 MCAL/UART/uart.d
 
 C_DEPS_AS_ARGS +=  \
-APP/Password.d \
+APP/CoolingSystem/coolingsystem.d \
+APP/Data_password/Password.d \
 GI/GIE.d \
 HAL/7SEG/sevensegment.d \
 HAL/EEPROM/eeprom.d \
 HAL/KeyPad/keypad.d \
 HAL/LCD/lcd.d \
+HAL/Lm35/lm35.d \
 HAL/UltraSonic/ultrasonic.d \
 main.d \
 MCAL/ADC/adc.d \
@@ -158,7 +171,14 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
-APP/Password.o: ../APP/Password.c
+APP/CoolingSystem/coolingsystem.o: ../APP/CoolingSystem/coolingsystem.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../.."  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+APP/Data_password/Password.o: ../APP/Data_password/Password.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../.."  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
@@ -194,6 +214,13 @@ HAL/KeyPad/keypad.o: ../HAL/KeyPad/keypad.c
 	
 
 HAL/LCD/lcd.o: ../HAL/LCD/lcd.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../.."  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+HAL/Lm35/lm35.o: ../HAL/Lm35/lm35.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../.."  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

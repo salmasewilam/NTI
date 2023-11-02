@@ -121,10 +121,16 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="APP\Password.c">
+    <Compile Include="APP\CoolingSystem\coolingsystem.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="APP\password.h">
+    <Compile Include="APP\CoolingSystem\coolingsystem.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="APP\Data_password\Password.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="APP\Data_password\password.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="GI\GIE.c">
@@ -164,6 +170,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="HAL\LCD\lcd_config.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\Lm35\lm35.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\Lm35\lm35.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="HAL\UltraSonic\ultrasonic.c">
@@ -264,11 +276,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="APP\Data_password" />
+    <Folder Include="APP\CoolingSystem" />
     <Folder Include="GI\" />
     <Folder Include="HAL\KeyPad" />
     <Folder Include="HAL\LCD" />
     <Folder Include="HAL\7SEG" />
     <Folder Include="HAL\EEPROM" />
+    <Folder Include="HAL\Lm35" />
     <Folder Include="HAL\UltraSonic" />
     <Folder Include="MCAL" />
     <Folder Include="APP" />

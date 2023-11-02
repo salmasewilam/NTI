@@ -21,5 +21,6 @@ void ADC_Init(void) ;
 u16 ADC_getDigitalValueSynchBlocking (CHANNELS ch);
 u8 ADC_getDigitalValueSynchNonBlocking (u16 * p);
 void ADC_SetCallBack(void(*p)(void));
+u16 ADC_getreading(void);
 
 #endif /* ADC_H_ */
