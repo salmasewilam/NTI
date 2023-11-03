@@ -133,6 +133,12 @@
     <Compile Include="APP\Data_password\password.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="APP\Login System\LoginSystem.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="APP\Login System\LoginSystem.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="GI\GIE.c">
       <SubType>compile</SubType>
     </Compile>
@@ -176,6 +182,15 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="HAL\Lm35\lm35.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\RTC\RTC.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\RTC\RTC.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\RTC\RTC_private.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="HAL\UltraSonic\ultrasonic.c">
@@ -278,12 +293,14 @@
   <ItemGroup>
     <Folder Include="APP\Data_password" />
     <Folder Include="APP\CoolingSystem" />
+    <Folder Include="APP\Login System" />
     <Folder Include="GI\" />
     <Folder Include="HAL\KeyPad" />
     <Folder Include="HAL\LCD" />
     <Folder Include="HAL\7SEG" />
     <Folder Include="HAL\EEPROM" />
     <Folder Include="HAL\Lm35" />
+    <Folder Include="HAL\RTC" />
     <Folder Include="HAL\UltraSonic" />
     <Folder Include="MCAL" />
     <Folder Include="APP" />

@@ -21,7 +21,7 @@ main.d main.o: .././main.c \
  C:\Users\USER\Desktop\nti\ repo\NTI\NTI_AVR\NTI_AVR\HAL\UltraSonic\ultrasonic.h \
  C:\Users\USER\Desktop\nti\ repo\NTI\NTI_AVR\NTI_AVR\MCAL\IIC\IIC_Interface.h \
  C:\Users\USER\Desktop\nti\ repo\NTI\NTI_AVR\NTI_AVR\HAL\EEPROM\EEPROM_interface.h \
- C:\Users\USER\Desktop\nti\ repo\NTI\NTI_AVR\NTI_AVR\HAL\Lm35\lm35.h
+ C:\Users\USER\Desktop\nti\ repo\NTI\NTI_AVR\NTI_AVR\HAL\RTC\RTC.h
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h:
 
@@ -67,4 +67,4 @@ C:\Users\USER\Desktop\nti\ repo\NTI\NTI_AVR\NTI_AVR\MCAL\IIC\IIC_Interface.h:
 
 C:\Users\USER\Desktop\nti\ repo\NTI\NTI_AVR\NTI_AVR\HAL\EEPROM\EEPROM_interface.h:
 
-C:\Users\USER\Desktop\nti\ repo\NTI\NTI_AVR\NTI_AVR\HAL\Lm35\lm35.h:
+C:\Users\USER\Desktop\nti\ repo\NTI\NTI_AVR\NTI_AVR\HAL\RTC\RTC.h:

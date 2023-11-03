@@ -21,7 +21,7 @@
 #include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\HAL\UltraSonic\ultrasonic.h"
 #include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\MCAL\IIC\IIC_Interface.h"
 #include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\HAL\EEPROM\EEPROM_interface.h"
-#include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\HAL\Lm35\lm35.h"
+#include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\HAL\RTC\RTC.h"
 void f1(u8 *str)
 {
 
@@ -39,12 +39,11 @@ void f3(void)
 
 int main(void)
 {
-	//H_LCD_void_Init();
+	H_LCD_void_Init();
 	sevseg_init();
 	keypad_init();
-	//ADC_Init();
+	ADC_Init();
 	//Timer1_Init(Timer1_Normal_Mode,Timer1_Scaler_8,Timer1_Disconnected,Timer1_Disconnected);
-	
 	//UltraSonic_init();
 	//Timer0_Init(Timer0_Fast_PWM_Mode,Timer0_Scaler_64,Timer0_Set_on_compare);
 	//Timer1_Init(Timer1_Normal_Mode,Timer1_Scaler_8,Timer1_Disconnected,Timer1_Disconnected);
@@ -53,10 +52,11 @@ int main(void)
 	 // SPI_init(&init);
 	 //I2C_init(I2C_prescaler_4,SCL_100);
 	// EEPROM_Init();
-	coolingsystem_init();
-
-   // DIO_voidSetPinDirection(ptrB,5,1);
-  //DIO_voidSetPinDirection(ptrB,6,0);
+	//coolingsystem_init();
+	
+	RTC_Init();
+    DIO_voidSetPinDirection(ptrC,0,1);
+  DIO_voidSetPinDirection(ptrC,1,1);
  // DIO_voidSetPinDirection(ptrB,7,1);
 
 	u8 smiley[8] = {
@@ -120,9 +120,18 @@ int main(void)
 	//Timer1_OVF_InterruptEnable();
 	//sei();
 
-
+	time_t t={30,45,9,PM};
+	date_t d2,d={3,1,8,99};
+	RTC_settime(&t);
+	time_t t2;
+	t2=RTC_getTime();
+	H_LCD_void_clear();
+	H_LCD_void_sendIntNum((u32)t2.Minutes);
+	d2=RTC_getdate();
+	H_LCD_void_sendData('D');
+	H_LCD_void_sendIntNum((u32)d2.year);
 while (1) {
-	coolingsystem_app();
+
 
 		}
 		

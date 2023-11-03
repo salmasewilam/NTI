@@ -59,7 +59,7 @@ void I2C_recieveByte_ACK(u8* ptr)
 	while(READ_BIT(TWCR, TWINT) == 0);
 	*ptr = TWDR;
 }
-void I2C__NoACK(u8* ptr)
+void I2C_RECIEVENoACK(u8* ptr)
 {
 	TWCR = (1<<TWINT)|(1<<TWEN);
 

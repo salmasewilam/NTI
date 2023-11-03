@@ -9,7 +9,7 @@
 #ifndef PASSWORD_H_
 #define PASSWORD_H_
 
-#include "C:\Users\USER\Documents\NTI_AVR\NTI_AVR\stdtypes.h"
+#include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\stdtypes.h"
 
 typedef struct  
 {

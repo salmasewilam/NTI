@@ -9,13 +9,14 @@
 #include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\HAL\LCD\lcd.h"
 
 
-static const data_t data_base[2]={{"AHMED ALI",1234,5060},{"SARA OMAR",5678,1020}};
-static u8 index=-1;
+const data_t data_base[2]={{"AHMED ALI",1234,5060},{"SARA OMAR",5678,1020}};
+u8 index=-1;
 u32 get_id(void)
 {
 	u32 id=0;
 	u8 key;
 	int i=0;
+	H_LCD_void_clear();
 	H_LCD_void_sendString("enter id: ");
 	for (;i<4;)
 	{
