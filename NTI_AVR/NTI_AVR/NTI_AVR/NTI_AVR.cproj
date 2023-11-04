@@ -121,40 +121,172 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Dio.c">
+    <Compile Include="APP\CoolingSystem\coolingsystem.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Dio.h">
+    <Compile Include="APP\CoolingSystem\coolingsystem.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="EXTINT.c">
+    <Compile Include="APP\Data_password\Password.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="EXTINT.h">
+    <Compile Include="APP\Data_password\password.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="GIE.c">
+    <Compile Include="APP\Login System\LoginSystem.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="GIE.h">
+    <Compile Include="APP\Login System\LoginSystem.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="keypad.c">
+    <Compile Include="GI\GIE.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="keypad.h">
+    <Compile Include="GI\GIE.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="keypad_config.h">
+    <Compile Include="GI\GIE_Private.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\7SEG\sevensegment.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\7SEG\sevensegment.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\EEPROM\eeprom.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\EEPROM\EEPROM_interface.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\FingerPrint\fingerprint.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\FingerPrint\fingerprint.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\KeyPad\keypad.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\KeyPad\keypad.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\KeyPad\keypad_config.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\LCD\lcd.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\LCD\lcd.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\LCD\lcd_config.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\Lm35\lm35.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\Lm35\lm35.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\RTC\RTC.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\RTC\RTC.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\RTC\RTC_private.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\UltraSonic\ultrasonic.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\UltraSonic\ultrasonic.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\UltraSonic\ultrasonic_config.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\UltraSonic\UltraSonic_private.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="sevensegment.c">
+    <Compile Include="MCAL\ADC\adc.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="sevensegment.h">
+    <Compile Include="MCAL\ADC\adc.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\ADC\adc_config.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\ADC\Adc_private.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\DIO\Dio.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\DIO\Dio.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\DIO\Dio_Private.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\EXT_INT\EXTINT.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\EXT_INT\EXTINT.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\EXT_INT\ExtInt_private.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\IIC\IIC.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\IIC\IIC_Interface.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\IIC\IIC_private.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\SPI\spi.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\SPI\SPI_config.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\SPI\SPI_interface.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\SPI\Spi_private.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\Timer\Timer.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\Timer\Timer_Config.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\Timer\Timer_interface.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\Timer\Timer_private.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\UART\uart.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\UART\Uart_config.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\UART\uart_interface.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\UART\Uart_private.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="stdtypes.h">
@@ -165,7 +297,28 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="APP\CoolingSystem" />
+    <Folder Include="APP\Data_password" />
+    <Folder Include="APP\Login System" />
+    <Folder Include="HAL\7SEG" />
+    <Folder Include="HAL\EEPROM" />
+    <Folder Include="HAL\KeyPad" />
+    <Folder Include="HAL\LCD" />
+    <Folder Include="HAL\Lm35" />
+    <Folder Include="HAL\FingerPrint" />
+    <Folder Include="HAL\UltraSonic" />
+    <Folder Include="HAL\RTC" />
     <Folder Include="MCAL" />
+    <Folder Include="MCAL\DIO" />
+    <Folder Include="MCAL\EXT_INT" />
+    <Folder Include="MCAL\ADC" />
+    <Folder Include="MCAL\IIC" />
+    <Folder Include="MCAL\Timer" />
+    <Folder Include="MCAL\SPI" />
+    <Folder Include="MCAL\UART" />
+    <Folder Include="HAL" />
+    <Folder Include="GI" />
+    <Folder Include="APP" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
 </Project>

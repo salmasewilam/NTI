@@ -8,15 +8,25 @@
 #define F_CPU 8000000
 #include <util/delay.h>
 
-#include "Dio.h"
-#include "sevensegment.h"
-#include "keypad.h"
-#include "EXTINT.h"
-#include "GIE.h"
-void f1(void)
+#include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\NTI_AVR\MCAL\DIO\Dio.h"
+#include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\NTI_AVR\HAL\7SEG\sevensegment.h"
+#include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\NTI_AVR\HAL\KeyPad\keypad.h"
+#include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\NTI_AVR\MCAL\EXT_INT\EXTINT.h"
+#include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\NTI_AVR\GI\GIE.h"
+#include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\NTI_AVR\HAL\LCD\lcd.h"
+#include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\NTI_AVR\MCAL\ADC\adc.h"
+#include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\NTI_AVR\MCAL\Timer\Timer_interface.h"
+#include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\NTI_AVR\MCAL\UART\uart_interface.h"
+#include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\NTI_AVR\MCAL\SPI\SPI_interface.h"
+#include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\NTI_AVR\HAL\UltraSonic\ultrasonic.h"
+#include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\NTI_AVR\MCAL\IIC\IIC_Interface.h"
+#include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\NTI_AVR\HAL\EEPROM\EEPROM_interface.h"
+#include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\NTI_AVR\HAL\RTC\RTC.h"
+#include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\NTI_AVR\HAL\FingerPrint\fingerprint.h"
+void f1(u8 *str)
 {
-	DIO_voidSetPinDirection(ptrC,2,1);
-	DIO_voidSetPinValue(ptrC,2,1);
+
+
 }
 void f2(void)
 {
@@ -25,43 +35,47 @@ void f2(void)
 }
 void f3(void)
 {
-	DIO_voidSetPinDirection(ptrC,1,1);
-	DIO_voidSetPinValue(ptrC,1,1);
+
 }
+
 int main(void)
 {
+	H_LCD_void_Init();
 	sevseg_init();
-	//keypad_init();
-	DIO_voidSetPinDirection(ptrD,2,0);
-	DIO_voidSetPinDirection(ptrD,3,0);
-	DIO_voidSetPinDirection(ptrD,4,0);
-	
-	EXT_voidEnable(INT0,The_rising_edge);
-	EXT_voidEnable(INT1,The_rising_edge);
-//	EXT_voidEnable(INT2,The_rising_edge);
-	
-	EXTINT_setcallback(f2,INT0);
-	EXTINT_setcallback(f1,INT1);
-	//EXTINT_setcallback(f3,INT2);
-	enable();
-	/*
-	DIO_voidSetPinDirection(ptrC,2,1);
-	DIO_voidSetPinDirection(ptrC,0,1);
-	DIO_voidSetPinDirection(ptrC,1,1);
-*/
-	u8 key;
+	keypad_init();
+	ADC_Init();
+	//Timer1_Init(Timer1_Normal_Mode,Timer1_Scaler_8,Timer1_Disconnected,Timer1_Disconnected);
+	//UltraSonic_init();
+	//Timer0_Init(Timer0_Fast_PWM_Mode,Timer0_Scaler_64,Timer0_Set_on_compare);
+	//Timer1_Init(Timer1_Normal_Mode,Timer1_Scaler_8,Timer1_Disconnected,Timer1_Disconnected);
+  SPI_init_bits init={F_4,SAMPLE,LOW_IDLE,MASTER,MSB,ENABLED,POLLING};
+     //Uart_Init();
+	 // SPI_init(&init);
+	 //I2C_init(I2C_prescaler_4,SCL_100);
+	// EEPROM_Init();
+	//coolingsystem_init();
+ fingerprint_init();
 
-    while (1) 
-    {
-		/*
-		key=keypad_getkey();
-		if (key =='0')
-		{
-			DIO_voidSetPinValue(ptrC,0,1);
-			_delay_ms(2000);
-			
+//	RTC_Init();
+    
+ // DIO_voidSetPinDirection(ptrB,7,1);	
+	//Uart_RX_SetCallBack(ReciveDataNoBlock_callback);
+
+//Uart_RX_InterruptEnable();
+
+	//enable();
+	//Timer0_EnableInt(Timer0_Compare_Match);
+	//Timer1_ICU_InterruptEnable();
+	//Timer1_OVF_InterruptEnable();
+	//sei();
+
+	FINGERP_ERROR_t e=	FingerPS_handShake();
+	if (e==0) H_LCD_void_sendData('S');
+	else H_LCD_void_sendData('F');
+
+while (1) {
+
+
 		}
-		*/
-    }
+		
 }
-
