@@ -7,39 +7,36 @@
 #include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\NTI_AVR\APP\CoolingSystem\coolingsystem.h"
 #include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\NTI_AVR\HAL\LCD\lcd.h"
 #include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\NTI_AVR\HAL\Lm35\lm35.h"
-#include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\NTI_AVR\MCAL\Timer\Timer_interface.h"
-#include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\NTI_AVR\MCAL\DIO\Dio.h"
-
-#define F_CPU 8000000
-#include <util/delay.h>
+#include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\NTI_AVR\HAL\DC Motor\DcMotor.h"
 
 void coolingsystem_init(void)
 {
 	lm35_init();
-	Timer0_Init(Timer0_Fast_PWM_Mode,Timer0_Scaler_8,Timer0_Set_on_compare);
+	DC_Motor_Init(M1);
 	H_LCD_void_Init();
-	DIO_voidSetPinDirection(ptrB,3,OUTPUT);
+	H_LCD_void_sendString("Current Temp= ");
 }
 
 void coolingsystem_app(void)
 {
-	H_LCD_void_clear();
+	//H_LCD_void_clear();
+	H_LCD_void_gotoXY(0,14);
 	u16 temp;
 	temp=lm35_gettemp();
 	H_LCD_void_sendIntNum((u32)temp);
+	H_LCD_void_sendString("  ");
 	if (temp<25)
 	{
-		setFastPWM(0);
+		DC_Motor_OFF(M1);
 	}
 	else if (temp<35)
 	{
-		setFastPWM(50);
+		DC_Motor_ON(M1,CLOCKWISE,50);
 		
 	}
 	else if (temp>35)
 	{
-		setFastPWM(80);
+		DC_Motor_ON(M1,CLOCKWISE,80);
 		
 	}
-	_delay_ms(100);
 }

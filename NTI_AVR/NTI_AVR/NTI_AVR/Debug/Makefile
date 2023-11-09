@@ -36,12 +36,15 @@ SUBDIRS :=  \
 ../APP/CoolingSystem \
 ../APP/Data_password \
 ../APP/Login\ System \
+../APP/Configurable\ duty\ cycle \
+../APP/Small\ OS \
 ../HAL/7SEG \
 ../HAL/EEPROM \
 ../HAL/KeyPad \
 ../HAL/LCD \
 ../HAL/Lm35 \
 ../HAL/FingerPrint \
+../HAL/DC\ Motor \
 ../HAL/UltraSonic \
 ../HAL/RTC \
 ../MCAL \
@@ -49,6 +52,7 @@ SUBDIRS :=  \
 ../MCAL/EXT_INT \
 ../MCAL/ADC \
 ../MCAL/IIC \
+../MCAL/WatchDog \
 ../MCAL/Timer \
 ../MCAL/SPI \
 ../MCAL/UART \
@@ -59,11 +63,14 @@ SUBDIRS :=  \
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
+../APP/Configurable\ duty\ cycle/config_duty_cycle.c \
 ../APP/CoolingSystem/coolingsystem.c \
 ../APP/Data_password/Password.c \
 ../APP/Login\ System/LoginSystem.c \
+../APP/Small\ OS/small_OS.c \
 ../GI/GIE.c \
 ../HAL/7SEG/sevensegment.c \
+../HAL/DC\ Motor/Dc\ Motor.c \
 ../HAL/EEPROM/eeprom.c \
 ../HAL/FingerPrint/fingerprint.c \
 ../HAL/KeyPad/keypad.c \
@@ -78,7 +85,8 @@ C_SRCS +=  \
 ../MCAL/IIC/IIC.c \
 ../MCAL/SPI/spi.c \
 ../MCAL/Timer/Timer.c \
-../MCAL/UART/uart.c
+../MCAL/UART/uart.c \
+../MCAL/WatchDog/watchdog.c
 
 
 PREPROCESSING_SRCS += 
@@ -88,11 +96,14 @@ ASM_SRCS +=
 
 
 OBJS +=  \
+APP/Configurable\ duty\ cycle/config_duty_cycle.o \
 APP/CoolingSystem/coolingsystem.o \
 APP/Data_password/Password.o \
 APP/Login\ System/LoginSystem.o \
+APP/Small\ OS/small_OS.o \
 GI/GIE.o \
 HAL/7SEG/sevensegment.o \
+HAL/DC\ Motor/Dc\ Motor.o \
 HAL/EEPROM/eeprom.o \
 HAL/FingerPrint/fingerprint.o \
 HAL/KeyPad/keypad.o \
@@ -107,14 +118,18 @@ MCAL/EXT_INT/EXTINT.o \
 MCAL/IIC/IIC.o \
 MCAL/SPI/spi.o \
 MCAL/Timer/Timer.o \
-MCAL/UART/uart.o
+MCAL/UART/uart.o \
+MCAL/WatchDog/watchdog.o
 
 OBJS_AS_ARGS +=  \
+"APP/Configurable duty cycle/config_duty_cycle.o" \
 APP/CoolingSystem/coolingsystem.o \
 APP/Data_password/Password.o \
 "APP/Login System/LoginSystem.o" \
+"APP/Small OS/small_OS.o" \
 GI/GIE.o \
 HAL/7SEG/sevensegment.o \
+"HAL/DC Motor/Dc Motor.o" \
 HAL/EEPROM/eeprom.o \
 HAL/FingerPrint/fingerprint.o \
 HAL/KeyPad/keypad.o \
@@ -129,14 +144,18 @@ MCAL/EXT_INT/EXTINT.o \
 MCAL/IIC/IIC.o \
 MCAL/SPI/spi.o \
 MCAL/Timer/Timer.o \
-MCAL/UART/uart.o
+MCAL/UART/uart.o \
+MCAL/WatchDog/watchdog.o
 
 C_DEPS +=  \
+APP/Configurable\ duty\ cycle/config_duty_cycle.d \
 APP/CoolingSystem/coolingsystem.d \
 APP/Data_password/Password.d \
 APP/Login\ System/LoginSystem.d \
+APP/Small\ OS/small_OS.d \
 GI/GIE.d \
 HAL/7SEG/sevensegment.d \
+HAL/DC\ Motor/Dc\ Motor.d \
 HAL/EEPROM/eeprom.d \
 HAL/FingerPrint/fingerprint.d \
 HAL/KeyPad/keypad.d \
@@ -151,14 +170,18 @@ MCAL/EXT_INT/EXTINT.d \
 MCAL/IIC/IIC.d \
 MCAL/SPI/spi.d \
 MCAL/Timer/Timer.d \
-MCAL/UART/uart.d
+MCAL/UART/uart.d \
+MCAL/WatchDog/watchdog.d
 
 C_DEPS_AS_ARGS +=  \
+"APP/Configurable duty cycle/config_duty_cycle.d" \
 APP/CoolingSystem/coolingsystem.d \
 APP/Data_password/Password.d \
 "APP/Login System/LoginSystem.d" \
+"APP/Small OS/small_OS.d" \
 GI/GIE.d \
 HAL/7SEG/sevensegment.d \
+"HAL/DC Motor/Dc Motor.d" \
 HAL/EEPROM/eeprom.d \
 HAL/FingerPrint/fingerprint.d \
 HAL/KeyPad/keypad.d \
@@ -173,7 +196,8 @@ MCAL/EXT_INT/EXTINT.d \
 MCAL/IIC/IIC.d \
 MCAL/SPI/spi.d \
 MCAL/Timer/Timer.d \
-MCAL/UART/uart.d
+MCAL/UART/uart.d \
+MCAL/WatchDog/watchdog.d
 
 OUTPUT_FILE_PATH +=NTI_AVR.elf
 
@@ -189,6 +213,13 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+APP/Configurable\ duty\ cycle/config_duty_cycle.o: ../APP/Configurable\ duty\ cycle/config_duty_cycle.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../.."  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
 APP/CoolingSystem/coolingsystem.o: ../APP/CoolingSystem/coolingsystem.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
@@ -210,6 +241,13 @@ APP/Login\ System/LoginSystem.o: ../APP/Login\ System/LoginSystem.c
 	@echo Finished building: $<
 	
 
+APP/Small\ OS/small_OS.o: ../APP/Small\ OS/small_OS.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../.."  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
 GI/GIE.o: ../GI/GIE.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
@@ -218,6 +256,13 @@ GI/GIE.o: ../GI/GIE.c
 	
 
 HAL/7SEG/sevensegment.o: ../HAL/7SEG/sevensegment.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../.."  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+HAL/DC\ Motor/Dc\ Motor.o: ../HAL/DC\ Motor/Dc\ Motor.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../.."  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
@@ -323,6 +368,13 @@ MCAL/Timer/Timer.o: ../MCAL/Timer/Timer.c
 	
 
 MCAL/UART/uart.o: ../MCAL/UART/uart.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../.."  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+MCAL/WatchDog/watchdog.o: ../MCAL/WatchDog/watchdog.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../.."  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

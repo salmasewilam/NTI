@@ -36,7 +36,7 @@ void Timer0_setDelayTimeMilliSec(u32 time);
 void Timer0_EnableInt(Timer0_Interrupt_Source source);
 void Timer0_DisableInt(Timer0_Interrupt_Source source);
 void Timer0_setCallBack(Timer0_Interrupt_Source source,void (*p)(void));
-
+void Timer0_setTCNT_value (u8 val);
 /************Timer1************/
 typedef enum{Timer1_Stopped=0,
 	Timer1_Scaler_1,

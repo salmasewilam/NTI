@@ -100,7 +100,10 @@ void setphaseCorrectPWM(u8 duty)
 }
 static volatile OVF_Num=0;
 static volatile u8 ov_flag=0;
-
+void Timer0_setTCNT_value (u8 val)
+{
+	TCNT0=val;
+}
 u32 Timer0_GetCounts(void)
 {
 	u32 counts=OVF_Num*256+TCNT0;

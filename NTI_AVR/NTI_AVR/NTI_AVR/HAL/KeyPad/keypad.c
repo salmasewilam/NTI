@@ -14,8 +14,8 @@
 #include <util/delay.h>
 
 
-u8 input[COLS]={FIRST_INPUT,SECOND_INPUT,THIRD_INPUT,FORTH_INPUT};
-u8 output[ROWS]={FIRST_OUTPUT,SECOND_OUTPUT,THIRD_OUTPUT,FORTH_OUTPUT};
+const u8 input[COLS]={FIRST_INPUT,SECOND_INPUT,THIRD_INPUT,FORTH_INPUT};
+const u8 output[ROWS]={FIRST_OUTPUT,SECOND_OUTPUT,THIRD_OUTPUT,FORTH_OUTPUT};
 	
 u8 keys[4][4]={{'7','8','9','/'},
                 {'4','5','6','*'},
@@ -44,11 +44,11 @@ void keypad_init (void)
 	DIO_voidSetPinValue(PORT_OUT,SECOND_OUTPUT,HIGH);
 	DIO_voidSetPinValue(PORT_OUT,SECOND_OUTPUT,HIGH);
 	DIO_voidSetPinValue(PORT_OUT,SECOND_OUTPUT,HIGH);
-	//set input as high for pullup 
-	//DIO_voidSetPinValue(ptrD,3,HIGH);
-	//DIO_voidSetPinValue(ptrD,5,HIGH);
-	//DIO_voidSetPinValue(ptrD,6,HIGH);
-	//DIO_voidSetPinValue(ptrD,7,HIGH);
+	//set input as high for pullup must in proteus
+	DIO_voidSetPinValue(PORT_IN,FIRST_INPUT,HIGH);
+	DIO_voidSetPinValue(PORT_IN,SECOND_INPUT,HIGH);
+	DIO_voidSetPinValue(PORT_IN,THIRD_INPUT,HIGH);
+	DIO_voidSetPinValue(PORT_IN,FORTH_INPUT,HIGH);;
 	
 }
 

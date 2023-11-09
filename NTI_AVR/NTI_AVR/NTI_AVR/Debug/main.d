@@ -22,7 +22,10 @@ main.d main.o: .././main.c \
  C:\Users\USER\Desktop\nti\ repo\NTI\NTI_AVR\NTI_AVR\NTI_AVR\MCAL\IIC\IIC_Interface.h \
  C:\Users\USER\Desktop\nti\ repo\NTI\NTI_AVR\NTI_AVR\NTI_AVR\HAL\EEPROM\EEPROM_interface.h \
  C:\Users\USER\Desktop\nti\ repo\NTI\NTI_AVR\NTI_AVR\NTI_AVR\HAL\RTC\RTC.h \
- C:\Users\USER\Desktop\nti\ repo\NTI\NTI_AVR\NTI_AVR\NTI_AVR\HAL\FingerPrint\fingerprint.h
+ C:\Users\USER\Desktop\nti\ repo\NTI\NTI_AVR\NTI_AVR\NTI_AVR\HAL\FingerPrint\fingerprint.h \
+ C:\Users\USER\Desktop\nti\ repo\NTI\NTI_AVR\NTI_AVR\NTI_AVR\MCAL\WatchDog\watchdog.h \
+ C:\Users\USER\Desktop\nti\ repo\NTI\NTI_AVR\NTI_AVR\NTI_AVR\HAL\DC\ Motor\DcMotor.h \
+ C:\Users\USER\Desktop\nti\ repo\NTI\NTI_AVR\NTI_AVR\NTI_AVR\APP\Login\ System\LoginSystem.h
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h:
 
@@ -71,3 +74,9 @@ C:\Users\USER\Desktop\nti\ repo\NTI\NTI_AVR\NTI_AVR\NTI_AVR\HAL\EEPROM\EEPROM_in
 C:\Users\USER\Desktop\nti\ repo\NTI\NTI_AVR\NTI_AVR\NTI_AVR\HAL\RTC\RTC.h:
 
 C:\Users\USER\Desktop\nti\ repo\NTI\NTI_AVR\NTI_AVR\NTI_AVR\HAL\FingerPrint\fingerprint.h:
+
+C:\Users\USER\Desktop\nti\ repo\NTI\NTI_AVR\NTI_AVR\NTI_AVR\MCAL\WatchDog\watchdog.h:
+
+C:\Users\USER\Desktop\nti\ repo\NTI\NTI_AVR\NTI_AVR\NTI_AVR\HAL\DC\ Motor\DcMotor.h:
+
+C:\Users\USER\Desktop\nti\ repo\NTI\NTI_AVR\NTI_AVR\NTI_AVR\APP\Login\ System\LoginSystem.h:

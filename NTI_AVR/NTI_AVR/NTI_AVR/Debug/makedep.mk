@@ -2,15 +2,21 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
+APP\Configurable duty cycle\config_duty_cycle.c
+
 APP\CoolingSystem\coolingsystem.c
 
 APP\Data_password\Password.c
 
 APP\Login System\LoginSystem.c
 
+APP\Small OS\small_OS.c
+
 GI\GIE.c
 
 HAL\7SEG\sevensegment.c
+
+HAL\DC Motor\Dc Motor.c
 
 HAL\EEPROM\eeprom.c
 
@@ -41,4 +47,6 @@ MCAL\SPI\spi.c
 MCAL\Timer\Timer.c
 
 MCAL\UART\uart.c
+
+MCAL\WatchDog\watchdog.c
 

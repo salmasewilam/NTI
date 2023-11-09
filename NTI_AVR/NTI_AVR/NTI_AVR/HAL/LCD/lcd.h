@@ -21,6 +21,6 @@ void H_LCD_void_creatCustomChar(const u8 * ArrPattern,u8 copy_u8charCode);
 void H_LCD_void_displayCustomChar(u8 copy_u8charCode);
 static void H_LCD_void_latchByte(u8 copy_u8Byte);
 void H_LCD_void_clear(void);
-
+void LCD_writeHex(u8 num);
 
 #endif /* LCD_H_ */

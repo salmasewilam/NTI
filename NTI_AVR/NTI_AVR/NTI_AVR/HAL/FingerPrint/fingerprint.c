@@ -7,18 +7,35 @@
 #include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\NTI_AVR\HAL\FingerPrint\fingerprint.h"
 #include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\NTI_AVR\MCAL\UART\uart_interface.h"
 #include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\NTI_AVR\MCAL\DIO\Dio.h"
+#include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\NTI_AVR\HAL\LCD\lcd.h"
+#define F_CPU 16000000
+#include <util/delay.h>
 
+static u8 return_ack(void)
+{
+	u8 ack,data[12];
+	for (int i=0;i<12;i++)
+	{
+		Uart_RecieveData(&data[i]);
+	}
+	/*for (int i=0;i<12;i++)
+	{
+		LCD_writeHex(data[i]);
+		H_LCD_void_sendData('-');
+	}	*/
+	ack=data[9];
+	return ack;
+}
 void fingerprint_init(void)
 {
-	Uart_Init();
 	DIO_voidSetPinDirection(ptrD,1,1);
 	DIO_voidSetPinDirection(ptrD,0,0);
+	Uart_Init();
 }
 FINGERP_ERROR_t FingerPS_handShake(void)
  {
 	 u8 ack;
 	 FINGERP_ERROR_t status;
-	 
 	 Uart_SendData(0xEF);
 	 Uart_SendData(0x01);
 	 Uart_SendData(0xFF);
@@ -31,7 +48,7 @@ FINGERP_ERROR_t FingerPS_handShake(void)
 	 Uart_SendData(0x40);
 	 Uart_SendData(0x00);
 	 Uart_SendData(0x44);
-	 Uart_RecieveData(&ack);
+	 ack=return_ack();
 	 status =ack;
 	 return status;
  }
@@ -52,7 +69,7 @@ FINGERP_ERROR_t FingerPS_genImg(void) //GenImg
 	 Uart_SendData(0x01);
 	 Uart_SendData(0x00);
 	 Uart_SendData(0x05);
-	 Uart_RecieveData(&ack);
+	 ack=return_ack();
 	 status=ack;
 	 return status;
  }
@@ -75,7 +92,7 @@ FINGERP_ERROR_t FingerPS_convertImg2CharFile(u8 bufferID)//Img2Tz
 	 sum=0x01+0x04+0x02+bufferID;
 	 Uart_SendData((u8)sum>>8);
 	 Uart_SendData((u8)sum);
-	 Uart_RecieveData(&ack);
+	 ack=return_ack();
 	 status=ack;
 	 return status; 
 }
@@ -95,7 +112,7 @@ FINGERP_ERROR_t FingerPS_genTemplate(void)//RegModel
 	 Uart_SendData(0x05);
 	 Uart_SendData(0x00);
 	 Uart_SendData(0x09);
-	 Uart_RecieveData(&ack);
+	  ack=return_ack();
 	  status=ack;
 	  return status; 
 }
@@ -120,7 +137,7 @@ FINGERP_ERROR_t FingerPS_strTemplate(u8 bufferID,u16 pageID)//store
 	sum=0x01+0x06+0x06+bufferID+pageID;
 	Uart_SendData((u8)sum>>8);
 	Uart_SendData((u8)sum);
-	Uart_RecieveData(&ack);
+	ack=return_ack();
 	status=ack;
 	return status;
 }
@@ -152,7 +169,7 @@ FINGERP_ERROR_t FingerPS_searchFinger(u8 bufferID,u16 startpage,u16 pageNum,u16 
 	Uart_RecieveData(&id2);
 	id+=id2;
 	*pageID=id;
-	Uart_RecieveData(&ack);
+    ack=return_ack();
 	status=ack;
 	return status;	
 }
@@ -172,7 +189,7 @@ FINGERP_ERROR_t FingerPS_emptyLibrary(void) //Empty
 	Uart_SendData(0x0D);
 	Uart_SendData(0x00);
 	Uart_SendData(0x11);
-	Uart_RecieveData(&ack);
+	 ack=return_ack();
 	status=ack;
 	return status;
 }
@@ -198,7 +215,7 @@ FINGERP_ERROR_t FingerPS_deleteFinger(u16 pageID) //DeletChar
 	sum=0x01+0x07+0x0C+pageID+0x01;
 	Uart_SendData((u8)sum>>8);
 	Uart_SendData(sum);
-	Uart_RecieveData(&ack);
+	 ack=return_ack();
 	status=ack;
 	return status;
 }
@@ -223,7 +240,7 @@ FINGERP_ERROR_t FingerPS_LoadCharFile(u8 bufferID,u16 pageID)//LoadChar
 	sum=0x01+0x06+0x07+bufferID+pageID;
 	Uart_SendData((u8)sum>>8);
 	Uart_SendData(sum);
-	Uart_RecieveData(&ack);
+	 ack=return_ack();
 	status=ack;
 	return status;
 }
@@ -243,7 +260,8 @@ FINGERP_ERROR_t FingerPS_match(void)//Match
 	Uart_SendData(0x03);
 	Uart_SendData(0x00);
 	Uart_SendData(0x07);
-	Uart_RecieveData(&ack);
+	 ack=return_ack();
 	status=ack;
 	return status;
 }
+

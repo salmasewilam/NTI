@@ -9,8 +9,8 @@
 #include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\NTI_AVR\HAL\LCD\lcd.h"
 
 
-const data_t data_base[2]={{"AHMED ALI",1234,5060},{"SARA OMAR",5678,1020}};
-u8 index=-1;
+const data_t data_base[2]={{"Amr ALI",1234,5060},{"SARA OMAR",5678,1020}};
+s8 index=-1;
 u32 get_id(void)
 {
 	u32 id=0;
@@ -50,9 +50,9 @@ u32 get_pass(void)
 	}
 	return pass;
 }
-state_t confirm_id_pass(void)
+state_t confirm_id_pass(u32 id,u32 pass)
 {
-	u32 id=get_id();
+	index=-1;
 	for (u8 i=0;i<DATA_SIZE;i++)
 	{
 		if (id ==data_base[i].id)
@@ -62,13 +62,13 @@ state_t confirm_id_pass(void)
 		}
 	}
 	if (index==-1) return USER_NOT_FOUND;
-	u32 pass=get_pass();
 	if (pass == data_base[index].pass)
 	{
 		return SUCCESS;
 	}
 	return WRONG_PASS;
 }
+/*
 
 void app(void)
 {
@@ -83,4 +83,4 @@ void app(void)
 		              H_LCD_void_sendString(data_base[index].name);
 					   break;
 	}
-}
+}*/

@@ -8,11 +8,8 @@
 
 #ifndef LOGINSYSTEM_H_
 #define LOGINSYSTEM_H_
-
-/*
-
-#define Relay_port ptrC
-#define Relay_pin  2*/
+void loginsystem_init (void);
+void loginsystem_app(void);
 
 
 

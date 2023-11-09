@@ -29,7 +29,7 @@ void H_LCD_void_Init(void)
    DIO_voidSetPinValue(RS_PORT,RS,LOW);
 	H_LCD_void_sendCommand(0x02);
 	H_LCD_void_sendCommand(0x02);
-	H_LCD_void_sendCommand(0x08);
+	H_LCD_void_sendCommand(0x28); //08
 	_delay_ms(1);
 	H_LCD_void_sendCommand(0x00);
 	H_LCD_void_sendCommand(0x0C);//display on off 0E
@@ -169,13 +169,28 @@ void H_LCD_void_displayCustomChar(u8 copy_u8charCode)
 
 void H_LCD_void_gotoXY(u8 copy_u8Row,u8 copy_u8Col)
 {
-	if (copy_u8Row==0)
+	/*if (copy_u8Row==0)
 	{
 		H_LCD_void_sendCommand(0x80|copy_u8Col);
 	}
 	else if (copy_u8Row ==1)
 	{
 		H_LCD_void_sendCommand(0x80+0x40+copy_u8Col);
+	}*/
+	if (copy_u8Row < 4 && copy_u8Col < 20) {
+		u8 address;
+		if (copy_u8Row == 0) {
+			address = copy_u8Col;
+			} else if (copy_u8Row == 1) {
+			address = 0x40 + copy_u8Col;
+			} else if (copy_u8Row == 2) {
+			address = 0x14 + copy_u8Col;
+			} else { // copy_u8Row == 3
+			address = 0x54 + copy_u8Col;
+		}
+
+		// Send the command to set the cursor position
+		H_LCD_void_sendCommand(0x80 | address);
 	}
 }
 
@@ -183,4 +198,50 @@ void H_LCD_void_clear(void)
 {
 	H_LCD_void_sendCommand(0x01);
 	_delay_ms(1);
+}
+
+void LCD_writeHex(u8 num)
+{
+	u8 num2;
+	
+	num2=num>>4;
+	switch(num2)
+	{
+		case 0x00: H_LCD_void_sendData('0'); break;
+		case 0x01: H_LCD_void_sendData('1'); break;
+		case 0x02: H_LCD_void_sendData('2'); break;
+		case 0x03: H_LCD_void_sendData('3'); break;
+		case 0x04: H_LCD_void_sendData('4'); break;
+		case 0x05: H_LCD_void_sendData('5'); break;
+		case 0x06: H_LCD_void_sendData('6'); break;
+		case 0x07: H_LCD_void_sendData('7'); break;
+		case 0x08: H_LCD_void_sendData('8'); break;
+		case 0x09: H_LCD_void_sendData('9'); break;
+		case 0x0a: H_LCD_void_sendData('A'); break;
+		case 0x0b: H_LCD_void_sendData('B'); break;
+		case 0x0c: H_LCD_void_sendData('C'); break;
+		case 0x0d: H_LCD_void_sendData('D'); break;
+		case 0x0e: H_LCD_void_sendData('E'); break;
+		case 0x0f: H_LCD_void_sendData('F'); break;
+	}
+	num2=num&0x0f;
+	switch(num2)
+	{
+		case 0x00: H_LCD_void_sendData('0'); break;
+		case 0x01: H_LCD_void_sendData('1'); break;
+		case 0x02: H_LCD_void_sendData('2'); break;
+		case 0x03: H_LCD_void_sendData('3'); break;
+		case 0x04: H_LCD_void_sendData('4'); break;
+		case 0x05: H_LCD_void_sendData('5'); break;
+		case 0x06: H_LCD_void_sendData('6'); break;
+		case 0x07: H_LCD_void_sendData('7'); break;
+		case 0x08: H_LCD_void_sendData('8'); break;
+		case 0x09: H_LCD_void_sendData('9'); break;
+		case 0x0a: H_LCD_void_sendData('A'); break;
+		case 0x0b: H_LCD_void_sendData('B'); break;
+		case 0x0c: H_LCD_void_sendData('C'); break;
+		case 0x0d: H_LCD_void_sendData('D'); break;
+		case 0x0e: H_LCD_void_sendData('E'); break;
+		case 0xf: H_LCD_void_sendData('F'); break;
+	}
 }

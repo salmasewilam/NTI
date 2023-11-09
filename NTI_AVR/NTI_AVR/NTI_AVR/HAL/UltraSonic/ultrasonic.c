@@ -11,7 +11,7 @@
 #include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\NTI_AVR\MCAL\Timer\Timer_interface.h"
 
 
-#define F_CPU 8000000
+#define F_CPU 16000000
 #include <util/delay.h>
 
 volatile u16 t1, t2;
@@ -19,9 +19,11 @@ volatile u8 ultrasonic_flag=0;
 
 void UltraSonic_init(void)
 {
+	Timer1_Init(Timer1_Normal_Mode,Timer1_Scaler_8,Timer1_Disconnected,Timer1_Disconnected);
 	DIO_voidSetPinDirection(TRIG_PORT,TRIG,OUTPUT);
 	DIO_voidSetPinDirection(ECHO,ECHO_PORT,INPUT);
 	Timer1_ICU_SetCallBack(f1);
+	enable();
 	Timer1_ICU_InterruptEnable();
 
 }
@@ -35,7 +37,7 @@ u16 ultrasonic_getdistance(void)
 	DIO_voidSetPinValue(TRIG_PORT,TRIG,LOW);
 	while(ultrasonic_flag<2);
 	u16 t=t2-t1;
-	u16 distance=t/58;
+	u16 distance=(t/58)/2;
 	return distance;
 }
 static void f1(void)

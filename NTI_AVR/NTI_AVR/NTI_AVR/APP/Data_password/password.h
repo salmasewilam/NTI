@@ -23,6 +23,6 @@ typedef enum {USER_NOT_FOUND,WRONG_PASS,SUCCESS}state_t;
 
 u32 get_id(void);
 u32 get_pass(void);
-state_t confirm_id_pass(void);
+state_t confirm_id_pass(u32 id,u32 pass);
 void app(void);
 #endif /* PASSWORD_H_ */

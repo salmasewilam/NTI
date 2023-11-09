@@ -11,7 +11,7 @@
 #include "C:\Users\USER\Documents\NTI_AVR\NTI_AVR\stdtypes.h"
 
 //functions prototypes
-
+void getframe(void);
 void Uart_Init(void);
 void Uart_SendData(u8 data);
 void Uart_RecieveData(u8* pdata);

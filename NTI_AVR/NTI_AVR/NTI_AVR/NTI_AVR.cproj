@@ -20,10 +20,10 @@
     <OverrideVtor>false</OverrideVtor>
     <CacheFlash>true</CacheFlash>
     <ProgFlashFromRam>true</ProgFlashFromRam>
-    <RamSnippetAddress />
+    <RamSnippetAddress>0x20000000</RamSnippetAddress>
     <UncachedRange />
     <preserveEEPROM>true</preserveEEPROM>
-    <OverrideVtorValue />
+    <OverrideVtorValue>exception_table</OverrideVtorValue>
     <BootSegment>2</BootSegment>
     <ResetRule>0</ResetRule>
     <eraseonlaunchrule>0</eraseonlaunchrule>
@@ -121,6 +121,12 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="APP\Configurable duty cycle\config_duty_cycle.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="APP\Configurable duty cycle\config_duty_cycle.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="APP\CoolingSystem\coolingsystem.c">
       <SubType>compile</SubType>
     </Compile>
@@ -139,6 +145,18 @@
     <Compile Include="APP\Login System\LoginSystem.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="APP\Login System\LoginSystem_config.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="APP\Small OS\SmallOS_config.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="APP\Small OS\small_OS.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="APP\Small OS\small_os.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="GI\GIE.c">
       <SubType>compile</SubType>
     </Compile>
@@ -152,6 +170,15 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="HAL\7SEG\sevensegment.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\DC Motor\Dc Motor.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\DC Motor\DC Motor_config.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\DC Motor\DcMotor.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="HAL\EEPROM\eeprom.c">
@@ -289,6 +316,15 @@
     <Compile Include="MCAL\UART\Uart_private.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="MCAL\WatchDog\watchdog.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\WatchDog\watchdog.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\WatchDog\watchdog_private.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="stdtypes.h">
       <SubType>compile</SubType>
     </Compile>
@@ -300,12 +336,15 @@
     <Folder Include="APP\CoolingSystem" />
     <Folder Include="APP\Data_password" />
     <Folder Include="APP\Login System" />
+    <Folder Include="APP\Configurable duty cycle" />
+    <Folder Include="APP\Small OS" />
     <Folder Include="HAL\7SEG" />
     <Folder Include="HAL\EEPROM" />
     <Folder Include="HAL\KeyPad" />
     <Folder Include="HAL\LCD" />
     <Folder Include="HAL\Lm35" />
     <Folder Include="HAL\FingerPrint" />
+    <Folder Include="HAL\DC Motor" />
     <Folder Include="HAL\UltraSonic" />
     <Folder Include="HAL\RTC" />
     <Folder Include="MCAL" />
@@ -313,6 +352,7 @@
     <Folder Include="MCAL\EXT_INT" />
     <Folder Include="MCAL\ADC" />
     <Folder Include="MCAL\IIC" />
+    <Folder Include="MCAL\WatchDog" />
     <Folder Include="MCAL\Timer" />
     <Folder Include="MCAL\SPI" />
     <Folder Include="MCAL\UART" />

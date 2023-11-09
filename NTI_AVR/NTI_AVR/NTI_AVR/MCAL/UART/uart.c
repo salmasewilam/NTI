@@ -6,11 +6,11 @@
  */ 
 
 #include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\NTI_AVR\MCAL\UART\uart_interface.h"
-#include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\NTI_AVR\MCAL\UART\uart_interface.h"
+#include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\NTI_AVR\MCAL\UART\Uart_config.h"
 #include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\NTI_AVR\MCAL\UART\Uart_private.h"
 #include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\NTI_AVR\utils.h"
 #include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\NTI_AVR\GI\GIE.h"
-
+#include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\NTI_AVR\HAL\LCD\lcd.h"
 static void (*Uart_RX_Fptr) (void)=0;
 static void (*Uart_TX_Fptr) (void)=0;
 
@@ -20,31 +20,31 @@ void Uart_Init(void)
 	UBRRH=0;
 	UBRRL=16;
 	/*#if (BAUD_RATE==BAUD_4800)
-	UBRRL=BAUD_4800;
+	UBRRL=(u8)BAUD_4800;
 	#elif (BAUD_RATE==BAUD_9600)
-	UBRRL=BAUD_9600;
+	UBRRL=(u8)BAUD_9600;
 	#elif (BAUD_RATE==BAUD_14400)
-	UBRRL=BAUD_14400;
+	UBRRL=(u8)BAUD_14400;
 	#elif (BAUD_RATE==BAUD_19200)
-	UBRRL=BAUD_19200;
+	UBRRL=(u8)BAUD_19200;
 	#elif (BAUD_RATE==BAUD_28800)
-	UBRRL=BAUD_28800;
+	UBRRL=(u8)BAUD_28800;
 	#elif (BAUD_RATE==BAUD_38400)
-	UBRRL=BAUD_38400;
+	UBRRL=(u8)BAUD_38400;
 	#elif (BAUD_RATE==BAUD_57600)
-	UBRRL=BAUD_57600;
+	UBRRL=(u8)BAUD_57600;
 	#elif (BAUD_RATE==BAUD_76800)
-	UBRRL=BAUD_76800;
+	UBRRL=(u8)BAUD_76800;
 	#elif (BAUD_RATE==BAUD_115200)
-	UBRRL=BAUD_115200;
+	UBRRL=(u8)BAUD_115200;
 	#elif (BAUD_RATE==BAUD_230400)
-	UBRRL=BAUD_230400;
+	UBRRL=(u8)BAUD_230400;
 	#elif (BAUD_RATE==BAUD_250000)
-	UBRRL=BAUD_250000;
+	UBRRL=(u8)BAUD_250000;
 	#elif (BAUD_RATE==BAUD_500000)
-	UBRRL=BAUD_500000;
+	UBRRL=(u8)BAUD_500000;
 	#elif (BAUD_RATE==BAUD_1000000)
-	UBRRL=BAUD_1000000;*/
+	UBRRL=(u8)BAUD_1000000;*/
 	//enable reciever and transmitter
 	UCSRB=(1<<RXEN)|(1<<TXEN);
 	//set frame
@@ -68,6 +68,7 @@ void Uart_Init(void)
 void Uart_SendData(u8 data)
 {
 	while (!READ_BIT(UCSRA,UDRE));
+	//LCD_writeHex(data);
 	UDR=data;
 }
 
@@ -75,6 +76,8 @@ void Uart_RecieveData(u8* pdata)
 {
 	while (!READ_BIT(UCSRA,RXC));
 	*pdata=UDR;
+	//LCD_writeHex(*pdata);
+	
 }
 
 void Uart_SendString(u8* str)
@@ -107,7 +110,18 @@ void Uart_TX_InterruptDisable(void)
 	
 }
 volatile u8 uart_str[100],uart_flag=0;
+/*
+void getframe(void)
+{
+	u8 data[12];
+	static u8 ind=0;
+	data[ind]=UDR;
+	LCD_writeHex(data[ind]);
+	H_LCD_void_sendData('-');
+	ind++;
+	if (ind==12) ind=0;
 
+}*/
 static void ReciveDataNoBlock_callback(void)
 {
     static volatile int i=0;
@@ -171,3 +185,4 @@ ISR (UART_TX_vect)
 	}
 	
 }
+
