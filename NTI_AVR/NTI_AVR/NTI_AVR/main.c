@@ -46,8 +46,8 @@ int main(void)
   //SPI_init_bits init={F_4,SAMPLE,LOW_IDLE,MASTER,MSB,ENABLED,POLLING};
     // Uart_Init();
 	 // SPI_init(&init);
-	 //I2C_init(I2C_prescaler_4,SCL_100);
-	// EEPROM_Init();
+	// I2C_init(I2C_prescaler_16,SCL_100);
+	 //EEPROM_Init();
 	//coolingsystem_init();
  //DIO_voidSetPinDirection(ptrD,0,1);
 // DIO_voidSetPinDirection(ptrD,1,0);
@@ -55,7 +55,7 @@ int main(void)
 // fingerprint_init();
 
  //H_LCD_void_sendData('F');
-//	RTC_Init();
+
     
  // DIO_voidSetPinDirection(ptrB,7,1);	
 	//Uart_RX_SetCallBack(ReciveDataNoBlock_callback);
@@ -121,7 +121,6 @@ H_LCD_void_sendData('-');
 H_LCD_void_sendString("ID");
 LCD_writeHex(id);
 */
-small_os_init();
 
 
 while (1) {

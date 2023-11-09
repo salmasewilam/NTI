@@ -11,7 +11,7 @@
 
 #include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\NTI_AVR\stdtypes.h"
 
-typedef enum {AM=0,PM,NONE=0}AM_PM_t;
+typedef enum {AM=0,PM,NONE}AM_PM_t;
 typedef struct{
 	u8 day;
 	u8 date;
@@ -25,7 +25,8 @@ typedef struct{
 	u8 Hours;
 	AM_PM_t am_pm;
 }time_t;
-
+void RTC_settime (time_t* t);
+void RTC_setdate (date_t* t);
 time_t RTC_getTime(void);
 date_t RTC_getdate(void);
 

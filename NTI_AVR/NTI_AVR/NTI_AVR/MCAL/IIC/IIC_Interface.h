@@ -11,12 +11,13 @@
 #include "C:\Users\USER\Desktop\nti repo\NTI\NTI_AVR\NTI_AVR\NTI_AVR\stdtypes.h"
 
 #define	STATUS_REGISTER_MASK	0xF8
+/*
 
 #define TWI_MT_START 0X08
 #define TWI_MT_SLA_W_ACK 0x18
 #define TWI_MT_DATA_ACK  0x28
 #define TWI_MR_SLA_R_ACK 0x40
-#define TWI_MR_DATA_ACK  0x50
+#define TWI_MR_DATA_ACK  0x50*/
 
 //Status codes for master transmit
 #define MT_START_COND_ACK  0X08
@@ -34,7 +35,7 @@
 #define MR_ARB_LOST_OR_NOT_ACK  0x38
 #define MR_SLA_R_ACK 0x40
 #define MR_DATA_RECIEVED_ACK 0x50
-#define Mr_DATA_RECIEVED_NOT_ACK 0x58
+#define MR_DATA_RECIEVED_NOT_ACK 0x58
 
 
 #define TWBR_OF_SCL(scl,pre)  ((((16000000)/(scl))-16)/((2)*(pre)))

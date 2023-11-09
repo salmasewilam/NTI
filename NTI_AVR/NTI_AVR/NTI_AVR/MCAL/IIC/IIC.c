@@ -35,7 +35,8 @@ void I2C_init (i2c_prescaler_t prescaler,SCL_t scl)
 void I2C_sendByte(u8 copy_u8data)
 {
 	TWDR = copy_u8data;
-	TWCR = (1<<TWINT)|(1<<TWSTA)|(1<<TWEN);
+	//TWCR = (1<<TWINT)|(1<<TWSTA)|(1<<TWEN);
+	TWCR = (1<<TWINT) | (1<<TWEN);
 	while (!(TWCR & (1<<TWINT)));
 }
 

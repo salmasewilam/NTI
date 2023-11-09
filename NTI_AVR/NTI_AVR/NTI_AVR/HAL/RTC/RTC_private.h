@@ -25,5 +25,6 @@
 #define CONTROL_REG ((volatile u8*)0X07)
 #define RAM_REG ((volatile u8*)0X08)
 
-
+static u8 BCD_to_Decimal(u8 bcd) ;
+static u8 decimal_BCD(u8 decimal);
 #endif /* RTC_PRIVATE_H_ */
